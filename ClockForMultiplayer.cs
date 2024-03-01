@@ -8,7 +8,7 @@ using Unity.Netcode;
 
 /**
   this is a clock that will work on multiplayer, you only need to copy this to a gameobject in the scene and
-  call the getTime() from some client script
+  call the getTime() from some client script which will return a string with the time in the format: 00:00 pm or am
 **/
 
 public class ClockNetcodeHandler : NetworkBehaviour
