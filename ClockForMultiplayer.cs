@@ -13,7 +13,7 @@ using Unity.Netcode;
 
 public class ClockNetcodeHandler : NetworkBehaviour
 {
-    private const float HOW_LONG_IS_THE_DAY_IN_MINUTES = 10f;
+    private const float HOW_LONG_IS_THE_DAY_IN_MINUTES = 10f; //change here for how long you want the day to last in minutes. if you leave at 10f, it will take 10 minutes to do a full day
     private float secondsPerDay;
     private float elapsedTime = 0f;
     private NetworkVariable<int> currentHour = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
