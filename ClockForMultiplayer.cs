@@ -7,7 +7,7 @@ using System;
 using Unity.Netcode;
 
 /**
-  this is a clock that will work on multiplayer, you only need to add this to a gameobject in the scene and
+  this is a clock that will work on multiplayer, you only need to copy this to a gameobject in the scene and
   call the getTime() from some client script
 **/
 
