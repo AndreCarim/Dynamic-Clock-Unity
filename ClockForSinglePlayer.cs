@@ -6,7 +6,7 @@ using TMPro;
 using System;
 
 /**
-  this is a clock that will work on multiplayer, you only need to copy this to a gameobject in the scene and
+  this is a clock that will work on singleplayer, you only need to copy this to a gameobject in the scene and
   call the getTime() from some client script which will return a string with the time in the format: 00:00 pm or am
 **/
 
@@ -19,29 +19,23 @@ public class DayCycleHandler : MonoBehaviour
     private int currentMinute = 0f;
     private int currentSecond = 0f;
 
-    public override void OnNetworkSpawn(){
-        if(!IsServer)return;
-
+    private void Start(){
         secondsPerDay = HOW_LONG_IS_THE_DAY_IN_MINUTES * 60f;
     }
 
     void Update()
     {
-        if(!IsServer) return;
-
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= secondsPerDay)
         {
             elapsedTime -= secondsPerDay;
         }
 
-        UpdateTimeServerRpc();
+        UpdateTime();
     }
 
-    //it needs to be serverRpc otherwise we would get an error, since serverRpc are only 
-    //replicated on the server instance of this script, so the clients wont even have this. 
-    [ServerRpc]
-    private void UpdateTimeServerRpc()
+
+    private void UpdateTime()
     {
         // Check if the DayCycleHandler component is enabled
         if (!enabled || !gameObject)
